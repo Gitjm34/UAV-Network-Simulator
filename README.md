@@ -9,46 +9,82 @@
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115-black)](https://fastapi.tiangolo.com/)
 [![PX4](https://img.shields.io/badge/PX4-v1.14-blueviolet)](https://px4.io/)
 [![License](https://img.shields.io/github/license/YOUR_USERNAME/uav-network-simulator-ids)](LICENSE)
-[![Stars](https://img.shields.io/github/stars/YOUR_USERNAME/uav-network-simulator-ids?style=social)](https://github.com/YOUR_USERNAME/uav-network-simulator-ids)
 
-**실시간 UAV(드론) 네트워크 시뮬레이터 + 적응형 강화학습(RL) 기반 AI 침입탐지시스템(IDS)**  
-**PX4 SITL + Gazebo + NS-3 네트워크 왜곡 + ROS MAVROS + FastAPI 데이터 파이프라인 완성 (2025.10.29 기준)**  
+**실시간 UAV 네트워크 시뮬레이터 + **Model-Based RL** 기반 **Adaptive AI-IDS** (GIST/KoreaU Collab)**  
+**PX4 SITL + Gazebo + NS-3 Dynamic Shaping + ROS MAVROS + FastAPI 1Hz Pipeline ✅ (2025.10.29)**  
 
-**✨ 핵심: 드론 고도(h)에 실시간 연동된 무선 링크 품질 시뮬 (delay/loss/rate) + 다중 도메인(드론/IoT/차량/기업/홈) Zero-Label IDS**
+**✨ UAV/IoT/Vehicular/Corporate/Home **Multi-Domain** Zero-Label IDS – **AMAGO + GNN + Contrastive Rewards + GenAug** 🚀**
 
 </div>
 
-## 📖 **프로젝트 소개: 왜 이걸 만들었나?**
+## 🎯 **왜 이 연구를 시작하게 됐나? (연구 배경 & 동기)**
 
-안녕하세요! 이 프로젝트는 **UAV(드론) 보안 연구**를 위해 개발된 **Full-Stack 시뮬레이션 프레임워크**입니다. 실제 드론 비행처럼 **현실적인 네트워크 환경**을 PC 하나로 재현하고, 그 위에서 **AI-IDS**를 훈련/테스트합니다.
+**현실 세계 네트워크는 동적이다.** 네트워크 토폴로지가 변하고 (노드 추가/제거), 사용자 행동이 바뀌며, **새로운 공격 (Zero-Day)**이 매일 등장합니다. 
 
-### **현실 문제점**
-- **드론 통신**: 지상국(QGC) ↔ 드론(PX4) 간 무선 링크(WiFi/LTE)는 **고도(h)에 따라 지연(delay), 패킷 손실(loss), 대역폭(rate)이 동적으로 변함**.
-  - 예: h=50m → delay=60ms, loss=15%, rate=2Mbps (현실 공식 적용)
-- **기존 IDS 한계**: 정적 데이터셋(CIC-IDS)에 의존 → **새로운 공격/네트워크 변화**에 취약 (99% ACC → 실전 70%↓)
-- **연구 목표**: **하나의 RL 에이전트**로 **UAV/IoT/차량/기업/홈 네트워크** 전 도메인에서 **Unseen 공격 자동 적응**.
+### **기존 IDS의 치명적 한계 (Prior Work Limitations)**
+- **고정 데이터셋 의존**: CIC-IDS, NSL-KDD 등 **정적 벤치마크**에서 99% ACC → **실전 70%↓** (Unseen 공격 무탐).
+- **특정 도메인/공격 특화**: DDoS만, SQL Injection만 → **UAV/IoT/Vehicular/Corporate/Home** 전환 불가.
+- **라벨 필수**: **Unlabeled/Adversarial 트래픽** 처리 불가.
+- **네트워크 동역학 무시**: 고정 토폴로지 가정 → **실시간 변화 (e.g., 드론 고도 ↑ → Link Degradation)** 대응 X.
 
-### **이 프로젝트의 혁신**
-1. **동적 네트워크 시뮬**: NS-3로 무선 링크 "가짜" 구현 → 고도 변화 시 **실시간 Traffic Shaping**.
-2. **1Hz 데이터 스트림**: Middleware → FastAPI POST → RL 에이전트 Pull (up/down bytes + metrics).
-3. **Model-Based RL (AMAGO)**: **GNN(토폴로지) + Tokenized Packets** + **Contrastive Self-Reward** + **Generative Aug**.
-   - **라벨 ZERO**: Unlabeled 트래픽으로도 학습!
-4. **확장성**: 단일 UAV → Multi-UAV → Hetero Networks.
+**RL의 약속**: 라벨 없이 **Feedback으로 자율 학습** → **Model-Based RL (AMAGO)**로 **Dynamics 예측 + 적응**.
 
-**🚀 데모 시나리오**: QGC로 드론 이륙 → 고도 100m 상승 → 링크 품질 급락 → IDS가 "공격?" 탐지!
+### **이 프로젝트의 미션 (Our Proposal)**
+- **현실 Simulator 구축**: **UAV부터 Heterogeneous Networks**까지 **동적 시뮬**.
+- **Single Agent**: **하나의 RL 모델**로 **Multi-Domain IDS**.
+- **Zero-Label Magic**: **Contrastive Reward Predictor** (Self-Supervised) + **Generative Aug** (GAN-like 신규 공격 생성).
+- **관찰**: **GNN Topology Embedding** + **Packet Tokenizer** (NLP-style).
 
-**📊 성과 (10/29)**: 50Hz Telemetry 무중단 + 1Hz Metrics 수집 **100% 안정** (로그 검증).
+**최종 목표**: **Unseen 환경/공격에서 Robust Detection** – **Paper Target: Jan 2026 Submit** 📜
 
-## ✨ **주요 기능 상세**
+**저자**: Byeongchang Kim (GIST, kbc202179@gm.gist.ac.kr) + KoreaU Cybersecurity Team
 
-| 기능 | 세부 설명 | 상태 |
-|------|-----------|------|
-| **🔄 동적 링크 시뮬** | `positions.txt` (1Hz) → NS-3 계산 → Middleware 적용<br>**공식**: delay=10+h ms, loss=0.3×h %, rate=6000-40×h kbps | ✅ 완성 |
-| **🌉 MAVLink Proxy** | `udp_mw_ns3.py`: QGC(14640) ↔ PX4(14540/50) **투명 중계** + Shaping | ✅ 10/08 |
-| **🤖 ROS Alt Monitor** | `alt2positions.py`: MAVROS `/mavros/global_position/rel_alt` → 파일 Write (1Hz) | ✅ 10/09 |
-| **📈 FastAPI Collector** | **Push**: `/ingest` (JSON: seq/delay/loss/rate/up/down_bytes)<br>**Pull**: `/obs/latest?k=5`, `/obs/seq?since=100&limit=50` | ✅ 10/17 |
-| **🧠 RL-IDS (WIP)** | AMAGO + GNN + Packet Tokenizer + Contrastive Reward + GAN Aug<br>**Multi-Domain**: UAV→Vehicular→... | 11/01~ |
-| **📊 Monitoring** | 실시간 up/down bytes 로그 + curl API | ✅ |
+## ✨ **주요 기능**
 
-## 🏗️ **시스템 아키텍처 (상세 다이어그램)**
-<img width="720" height="540" alt="image" src="https://github.com/user-attachments/assets/edf57ee5-8171-4acf-9552-7fe5402ad19d" />
+| 기능 | 설명 | 상태 |
+|------|------|------|
+| **🔄 Dynamic UAV Link** | 고도(h) → NS-3 Calc (delay=10+h ms, loss=0.3*h%, rate=6000-40*h kbps) → Real-Time Shaping | ✅ 10/09 |
+| **🌉 MAVLink Middleware** | `udp_mw_ns3.py`: QGC ↔ PX4 **Transparent Proxy** | ✅ 10/08 |
+| **🤖 ROS Telemetry** | `alt2positions.py`: `/mavros/global_position/rel_alt` → `positions.txt` (1Hz) | ✅ 10/09 |
+| **📊 FastAPI Pipeline** | **Push**: 1Hz POST `/ingest` (seq/delay/loss/rate/up/down_bytes)<br>**Pull**: `/obs/latest?k=5` `/obs/seq?since=100` | ✅ 10/17 |
+| **🧠 RL-IDS Core** | AMAGO + GNN + Token Embed + Contrastive Reward + GenAug | **11/01 Start** |
+| **📈 Monitoring** | Live Bytes/Log + Curl API | ✅ |
+
+## 🏗️ **System Architecture**
+
+### **Mermaid Flow**
+```mermaid
+graph TB
+    QGC[QGC<br/>UDP 14640 ↑]
+    PX4[PX4 SITL<br/>14540 ↑ / 14550 ↓<br/>50Hz Telemetry]
+    Gazebo[Gazebo Physics]
+    
+    MW[Middleware<br/>udp_mw_ns3.py<br/>**Shaping**]
+    NS3[NS-3<br/>mw-link-metrics<br/>positions.txt → Metrics]
+    Alt[ROS<br/>alt2positions.py<br/>1Hz Alt → File]
+    
+    Collector[FastAPI 8080<br/>POST /ingest<br/>GET /obs/*]
+    
+    RL[🧠 AMAGO Agent<br/>GNN Topology<br/>Packet Tokens]
+    Reward[Contrastive<br/>Self-Reward]
+    Gen[GenAI Aug]
+    
+    QGC --> MW
+    MW --> PX4
+    PX4 --> MW
+    MW --> QGC
+    
+    Alt --> NS3
+    NS3 --> MW
+    MW --> Collector
+    Collector --> RL
+    RL --> Reward
+    RL --> Gen
+    
+    PX4 -.-> Alt
+    Gazebo <--> PX4
+    
+    classDef core fill:#e1f5fe
+    classDef ai fill:#e8f5e8
+    class QGC,PX4,MW,NS3,Alt,Gazebo core
+    class RL,Reward,Gen ai
