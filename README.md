@@ -16,7 +16,7 @@
 
 ## 🎯 **왜 이 연구를 시작하게 됐나? (연구 배경 & 동기)**
 
-**현실 세계 네트워크는 동적이다.** 네트워크 토폴로지가 변하고 (노드 추가/제거), 사용자 행동이 바뀌며, 새로운 공격 (Zero-Day)이 매일 등장함. 
+**현실 세계 네트워크는 동적이다.** 네트워크 토폴로지가 변하고 (노드 추가/제거), 사용자 행동이 바뀌며, 새로운 공격 (Zero-Day)이 매일 등장함
 
 ### **기존 IDS의 치명적 한계 (Prior Work Limitations)**
 - **고정 데이터셋 의존**: CIC-IDS, NSL-KDD 등 **정적 벤치마크**에서 99% ACC → **실전 70%↓** (Unseen 공격 무탐).
@@ -27,7 +27,7 @@
 **Reinforcement learning**: 라벨 없이 **Feedback으로 자율 학습** → **Model-Based RL (AMAGO)**로 **Dynamics 예측 + 적응**
 
 ### **프로젝트의 미션 (Our Proposal)**
-- **현실 반영 Simulator 구축**: **UAV부터 Heterogeneous Networks**까지 **동적 시뮬**.
+- **현실 반영 Simulator 구축**: **UAV부터 Heterogeneous Networks**까지 **동적 시뮬**
 - **Single Agent**: **하나의 RL 모델**로 **Multi-Domain IDS**
 - **Zero-Label Magic**: **Contrastive Reward Predictor** (Self-Supervised) + **Generative Aug** (GAN-like 신규 공격 생성)
 - **관찰**: **GNN Topology Embedding** + **Packet Tokenizer** (NLP-style)
