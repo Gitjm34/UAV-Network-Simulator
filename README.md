@@ -34,7 +34,7 @@
 
 **최종 목표**: **Unseen 환경/공격에서 Robust Detection** – **Paper Target: Jan 2026 Submit** 📜
 
-**저자**: Byeongchang Kim (GIST, kbc202179@gm.gist.ac.kr) + KoreaU Cybersecurity Team
+**데이타셋 생성**: 실험을 통한 MAVLink, Sensor Dataset 생성 및 배포 
 
 ## ✨ **주요 기능**
 
