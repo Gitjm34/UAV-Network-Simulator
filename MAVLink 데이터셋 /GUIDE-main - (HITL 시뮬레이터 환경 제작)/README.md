@@ -17,3 +17,5 @@ Raw PCAP files used in the study.
 
 Additional datasets are available on our laboratory homepage.
 - HCRL homepage link: https://ocslab.hksecurity.net
+
+<img width="478" height="477" alt="image" src="https://github.com/user-attachments/assets/b6c30c7a-7c96-4966-9238-73bd6bd953fa" />
