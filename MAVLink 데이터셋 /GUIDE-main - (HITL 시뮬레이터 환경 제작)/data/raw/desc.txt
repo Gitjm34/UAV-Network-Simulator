@@ -1,0 +1,17 @@
+<Old Dataset>
+-hitl_100000_normal_sequences.npy
+-hitl_100000_normal2_sequences.npy
+-hitl_100000_heartbeat_sequences.npy
+-hitl_100000_heartbeat2_sequences.npy
+-hitl_100000_ping_sequences.npy
+-hitl_100000_ping2_sequences.npy
+-hitl_100000_request_sequences.npy
+-hitl_100000_request2_sequences.npy
+
+<New Dataset>
+-normal(filtered)_sequences.npy
+-heartbeat(filtered)_sequences.npy
+-ping(filtered)_sequences.npy
+-request(filtered)_sequences.npy
+-suspension(filtered)_sequences.npy
+-corruption(filtered)_sequences.npy

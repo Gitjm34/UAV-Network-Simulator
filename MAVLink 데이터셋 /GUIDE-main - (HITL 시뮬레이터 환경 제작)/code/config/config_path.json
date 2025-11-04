@@ -1,0 +1,45 @@
+{
+    "root_path": "D:/tasks/Projects/2022/무인이동체/논문작업/guide",
+
+    "raw_data": "./data/raw",
+
+    "msg_id_to_int_converter": "./data/metadata/msg_id_to_int_converter(merged).pickle",
+    "int_to_msg_id_converter": "./data/metadata/int_to_msg_id_converter(merged).pickle",
+
+    "msg_id_frequency": "./data/metadata/msg_id_freq.npy",
+
+    "preprocessed_file_dir_template": "./data/preprocessed/{0}",
+    "augmented_file_dir_template": "./data/augmented_data/{0}/{1}",
+    "undersampled_file_dir_template": "./data/undersampled_data/{0}_{1}",
+    "sra_data": "./data/sra_data",
+
+    "msg_id_file_name_template": "{0}_{1}_linear(X){2}.npy",
+
+    "target_model_save_dir_path_template": "./data/model_save/target_model/{0}",
+    "seqgan_model_save_dir_path_template": "./data/model_save/seqgan/{0}/{1}",
+    "seqgan_generator_save_file_name": "adv_trained_gen_{0}_{1}",
+    "seqgan_generated_data_file_path_template": "./data/generated_data/{0}/{1}/{2}",
+    "seqgan_discriminator_save_file_name": "adv_trained_dis_{0}_{1}",
+
+    "maskgan_model_save_dir_path_template": "./data/model_save/maskgan/{0}/{1}",
+    "maskgan_generator_save_file_name": "adv_trained_gen_{0}_{1}",
+    "maskgan_generated_data_file_path_template": "./data/generated_data/{0}/{1}/{2}",
+    "maskgan_discriminator_save_file_name": "adv_trained_dis_{0}_{1}",
+
+    "rankgan_model_save_dir_path_template": "./data/model_save/rankgan/{0}/{1}",
+    "rankgan_generator_save_file_name": "adv_trained_gen_{0}_{1}",
+    "rankgan_generated_data_file_path_template": "./data/generated_data/{0}/{1}/{2}",
+    "rankgan_discriminator_save_file_name": "adv_trained_ran_{0}_{1}",
+
+    "stepgan_model_save_dir_path_template": "./data/model_save/stepgan/{0}/{1}",
+    "stepgan_generator_save_file_name": "adv_trained_gen_{0}_{1}",
+    "stepgan_generated_data_file_path_template": "./data/generated_data/{0}/{1}/{2}",
+    "stepgan_discriminator_save_file_name": "adv_trained_dis_{0}_{1}",
+
+    "leakgan_model_save_dir_path_template": "./data/model_save/leakgan/{0}/{1}",
+    "leakgan_generator_save_file_name": "adv_trained_gen_{0}_{1}",
+    "leakgan_generated_data_file_path_template": "./data/generated_data/{0}/{1}/{2}",
+    "leakgan_discriminator_save_file_name": "adv_trained_dis_{0}_{1}",
+
+    "result_data_dir_path": "./data/result"
+}
