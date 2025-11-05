@@ -55,16 +55,16 @@ UAV/IoT/Vehicular/Corporate/Home **Multi-Domain** Zero-Label IDS – AMAGO + GNN
 ## 🏗️ System Architecture
 ![System Architecture](https://github.com/user-attachments/assets/423a1bef-9a82-408b-bc0d-d2bea4e28ab5)
 
-- **PX4 SITL (Gazebo)**: 가상 드론 autopilot. MAVLink #0: UDP 14540 (server), MAVLink #1: UDP Client → 127.0.0.1:14550 (to MW).
-- **Middleware (udp_mw_ns3.py)**: Receives: 14640 (from QGC) 14550 (from PX4). Forwards to PX4 14540 (FCU) to QGC inbound (e.g.,1550). Apply ns-3 delay/loss/rate. Logs: up_bytes, down_bytes, seq. POST /ingest -> Collector.
-- **QGroundControl**: Connect to host: 127.0.0.1:14640. Listen: OFF. Inbound from MW: dynamic (e.g., ~1550).
-- **MAVROS**: Bind: (e.g.)14558. Send -> 127.0.0.1:14556. alti2positions.py Writes Position.txt (1Hz). ros_extra_pusher.py POST /ingest_extra -> Collector.
-- **ns-3 (mw-link-metrics)**: Reads Positions.txt. Calculates delay/loss/rate (for shaping).
-- **Collector (Fast API)**: POST /ingest (Network). POST /ingest_extra (Drone Telemetry). GET /obs/latest, GET /obs/seq. Port 8080.
-- **데이터 흐름**: 드론 고도 변화 → positions.txt 업데이트 → ns-3 계산 → 미들웨어 적용 → Collector 수집. RAW 패킷 캡처(tcpdump) + 변환(tshark) 지원.
+- **PX4 SITL (Gazebo)**: 가상 드론 autopilot. MAVLink #0: UDP 14540 (server), MAVLink #1: UDP Client → 127.0.0.1:14550 (to MW)
+- **Middleware (udp_mw_ns3.py)**: Receives: 14640 (from QGC) 14550 (from PX4). Forwards to PX4 14540 (FCU) to QGC inbound (e.g.,1550). Apply ns-3 delay/loss/rate. Logs: up_bytes, down_bytes, seq. POST /ingest -> Collector
+- **QGroundControl**: Connect to host: 127.0.0.1:14640. Listen: OFF. Inbound from MW: dynamic (e.g., ~1550)
+- **MAVROS**: Bind: (e.g.)14558. Send -> 127.0.0.1:14556. alti2positions.py Writes Position.txt (1Hz). ros_extra_pusher.py POST /ingest_extra -> Collector
+- **ns-3 (mw-link-metrics)**: Reads Positions.txt. Calculates delay/loss/rate (for shaping)
+- **Collector (Fast API)**: POST /ingest (Network). POST /ingest_extra (Drone Telemetry). GET /obs/latest, GET /obs/seq. Port 8080
+- **데이터 흐름**: 드론 고도 변화 → positions.txt 업데이트 → ns-3 계산 → 미들웨어 적용 → Collector 수집. RAW 패킷 캡처(tcpdump) + 변환(tshark) 지원
 
 ## 🛠️ 설치 가이드 (Dependencies & Setup)
-Ubuntu 20.04 (ARM64) 기반으로 테스트됨. ROS Noetic, NS-3, PX4 등 설치 필요.
+Ubuntu 20.04 (ARM64) 기반으로 테스트됨. ROS Noetic, NS-3, PX4 등 설치 필요
 
 ### 1. 기본 패키지 설치
 ```bash
