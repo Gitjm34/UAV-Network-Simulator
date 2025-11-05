@@ -10,7 +10,7 @@
 **실시간 UAV 네트워크 시뮬레이터 + **Model-Based RL** 기반 **Adaptive AI-IDS** (GIST/KoreaU Collab)**  
 **PX4 SITL + Gazebo + NS-3 Dynamic Shaping + ROS MAVROS + FastAPI 1Hz Pipeline**  
 
-**UAV/IoT/Vehicular/Corporate/Home **Multi-Domain** Zero-Label IDS – **AMAGO + GNN + Contrastive Rewards + GenAug** �**
+**UAV/IoT/Vehicular/Corporate/Home **Multi-Domain** Zero-Label IDS – **AMAGO + GNN + Contrastive Rewards + GenAug** 
 
 </div>
 
