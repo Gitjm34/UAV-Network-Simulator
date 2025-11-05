@@ -7,7 +7,7 @@
 [![PX4](https://img.shields.io/badge/PX4-v1.14-blueviolet)](https://px4.io/)
 [![License](https://img.shields.io/github/license/YOUR_USERNAME/uav-network-simulator-ids)](LICENSE)
 
-**실시간 UAV 네트워크 시뮬레이터 + **Model-Based RL** 기반 **Adaptive AI-IDS**   
+실시간 UAV 네트워크 시뮬레이터 + **Model-Based RL** 기반 **Adaptive AI-IDS**   
 **PX4 SITL + Gazebo + NS-3 Dynamic Shaping + ROS MAVROS + FastAPI 1Hz Pipeline**  
 
 UAV/IoT/Vehicular/Corporate/Home **Multi-Domain** Zero-Label IDS – AMAGO + GNN + Contrastive Rewards + GenAug
