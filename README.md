@@ -24,7 +24,7 @@ UAV/IoT/Vehicular/Corporate/Home **Multi-Domain** Zero-Label IDS – AMAGO + GNN
 - **라벨 필수**: **Unlabeled/Adversarial 트래픽** 처리 불가
 - **네트워크 동역학 무시**: 고정 토폴로지 가정 → **실시간 변화 (e.g., 드론 고도 ↑ → Link Degradation)** 대응 X
 
-**Reinforcement learning**: 라벨 없이 **Feedback으로 자율 학습** → **Model-Based RL (AMAGO)**로 **Dynamics 예측 + 적응**
+**Reinforcement learning**: 라벨 없이 **Feedback으로 자율 학습** → Model-Based RL (AMAGO)로 **Dynamics 예측 + 적응**
 
 ### **프로젝트의 미션 (Our Proposal)**
 - **현실 반영 Simulator 구축**: **UAV부터 Heterogeneous Networks**까지 **동적 시뮬**
